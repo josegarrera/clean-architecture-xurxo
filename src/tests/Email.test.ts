@@ -9,4 +9,10 @@ describe('Email', () => {
     const email = Email.create('hola@dominio.com');
     expect(email.valueOf()).toBe('hola@dominio.com');
   });
+
+  it('should be equal with the same address', () => {
+    const firstEmail = Email.create('email@dominio.com');
+    const secondEmail = Email.create('email@dominio.com');
+    expect(firstEmail.equals(secondEmail)).toBe(true);
+  });
 });

@@ -11,4 +11,8 @@ export class Email {
     if (!/\S+@\S+\.\S+/.test(email)) throw new Error('Invalid email address');
     return new Email(email);
   }
+
+  equals(other: Email) {
+    return this.value === other.valueOf();
+  }
 }
