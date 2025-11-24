@@ -25,6 +25,5 @@ Entidades
 - usuario
 
 Value Objects
-- Password
 - Email
  */
