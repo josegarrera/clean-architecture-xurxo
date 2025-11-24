@@ -18,6 +18,18 @@ describe('Password', () => {
   it('should validate at least 1 number', () => {
     expect(() => Password.create('AAAAAAAA')).toThrow('Password must have at least 1 number');
   });
+
+  it('should be equal with the same pasword', () => {
+    const firstPassword = Password.create('password123');
+    const secondPassword = Password.create('password123');
+    expect(firstPassword.equals(secondPassword)).toBe(true);
+  });
+
+  it('should be not equal with different passwords', () => {
+    const firstPassword = Password.create('password123');
+    const secondPassword = Password.create('password456');
+    expect(firstPassword.equals(secondPassword)).toBe(false);
+  });
 });
 
 /*

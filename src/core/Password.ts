@@ -15,4 +15,8 @@ export class Password {
     if (!/\d/.test(password)) throw new Error('Password must have at least 1 number');
     return new Password(password);
   }
+
+  equals(other: Password) {
+    return this.value === other.valueOf();
+  }
 }
