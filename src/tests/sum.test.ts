@@ -10,12 +10,16 @@ test('should sum two numbers', () => {
 
 describe('Password', () => {
   it('should create a password', () => {
-    const password = Password.create('12345678');
-    expect(password.valueOf()).toBe('12345678');
+    const password = Password.create('12345678A');
+    expect(password.valueOf()).toBe('12345678A');
   });
 
   it('should validate at least 8 characters', () => {
     expect(() => Password.create('123')).toThrow('Password must be at least 8 characters long');
+  });
+
+  it('should validate at least 1 letter', () => {
+    expect(() => Password.create('12345678')).toThrow('Password must have at least 1 letter');
   });
 });
 
@@ -41,6 +45,7 @@ class Password {
 
   static create(password: string): Password {
     if (password.length < 8) throw new Error('Password must be at least 8 characters long');
+    if (!/[a-zA-Z]/.test(password)) throw new Error('Password must have at least 1 letter');
     return new Password(password);
   }
 }
