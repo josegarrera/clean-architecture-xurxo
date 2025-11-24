@@ -15,4 +15,10 @@ describe('Email', () => {
     const secondEmail = Email.create('email@dominio.com');
     expect(firstEmail.equals(secondEmail)).toBe(true);
   });
+
+  it('should be not equal with different addresses', () => {
+    const firstEmail = Email.create('first-email@dominio.com');
+    const secondEmail = Email.create('second-email@dominio.com');
+    expect(firstEmail.equals(secondEmail)).toBe(false);
+  });
 });
