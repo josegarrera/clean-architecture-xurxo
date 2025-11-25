@@ -28,6 +28,9 @@ export class User {
     if (!props.email) {
       throw new Error('Email is required');
     }
+    if (!props.password) {
+      throw new Error('Password is required');
+    }
     return new User(props);
   }
 }

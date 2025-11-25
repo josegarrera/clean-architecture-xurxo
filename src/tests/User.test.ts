@@ -55,4 +55,16 @@ describe('User', () => {
       });
     }).toThrow('Email is required');
   });
+
+  it('should not create user without password', () => {
+    const email = Email.create('test@example.com');
+
+    expect(() => {
+      User.create({
+        name: 'John Doe',
+        email,
+        password: undefined as unknown as Password,
+      });
+    }).toThrow('Password is required');
+  });
 });
