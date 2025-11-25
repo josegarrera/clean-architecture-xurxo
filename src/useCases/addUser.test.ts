@@ -30,4 +30,21 @@ describe('Add user', () => {
     await addUser.execute(user);
     expect(addSpy).toHaveBeenCalledWith(user);
   });
+
+  it('should throw an error when adding a user with the same email', async () => {
+    const usersRepository = new MockUsersRepository();
+    const firstUser = User.create({
+      name: 'John Doe',
+      email: Email.create('email@dominio.com'),
+      password: Password.create('aaaaaa123'),
+    });
+    const addUser = new AddUser(usersRepository);
+    await addUser.execute(firstUser);
+    const secondUser = User.create({
+      name: 'John Doe',
+      email: Email.create('email@dominio.com'),
+      password: Password.create('aaaaaa123'),
+    });
+    await expect(addUser.execute(secondUser)).rejects.toThrow('Email already in use');
+  });
 });

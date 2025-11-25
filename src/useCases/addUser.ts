@@ -7,6 +7,8 @@ export class AddUser {
   }
 
   async execute(user: User) {
+    const users = await this.usersRepository.getAll();
+    if (users.some((u) => u.email.equals(user.email))) throw new Error('Email already in use');
     return await this.usersRepository.add(user);
   }
 }
