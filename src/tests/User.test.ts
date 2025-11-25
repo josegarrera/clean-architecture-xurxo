@@ -90,4 +90,22 @@ describe('User', () => {
 
     expect(user1.equals(user2)).toBe(true);
   });
+
+  it('should not be equal with different id', () => {
+    const email = Email.create('test@example.com');
+    const password = Password.create('password123');
+    const user1 = User.create({
+      name: 'John Doe',
+      email,
+      password,
+    });
+
+    const user2 = User.create({
+      name: 'John Doe',
+      email,
+      password,
+    });
+
+    expect(user1.equals(user2)).toBe(false);
+  });
 });
