@@ -67,4 +67,27 @@ describe('User', () => {
       });
     }).toThrow('Password is required');
   });
+
+  it('should be equal with same id', () => {
+    const email1 = Email.create('test1@example.com');
+    const password1 = Password.create('password123');
+    const user1 = User.create({
+      name: 'John Doe',
+      email: email1,
+      password: password1,
+    });
+
+    const email2 = Email.create('test2@example.com');
+    const password2 = Password.create('password456');
+    const user2 = User.create({
+      name: 'Jane Doe',
+      email: email2,
+      password: password2,
+    });
+
+    // Manually set same id for testing
+    Object.defineProperty(user2, 'id', { value: user1.id });
+
+    expect(user1.equals(user2)).toBe(true);
+  });
 });

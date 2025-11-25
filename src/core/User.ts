@@ -33,4 +33,8 @@ export class User {
     }
     return new User(props);
   }
+
+  equals(other: User): boolean {
+    return this.id === other.id;
+  }
 }
