@@ -1,10 +1,6 @@
 export class Email {
-  private constructor(private readonly value: string) {
+  private constructor(readonly value: string) {
     this.value = value;
-  }
-
-  valueOf(): string {
-    return this.value;
   }
 
   static create(email: string): Email {
@@ -13,6 +9,6 @@ export class Email {
   }
 
   equals(other: Email) {
-    return this.value === other.valueOf();
+    return this.value === other.value;
   }
 }

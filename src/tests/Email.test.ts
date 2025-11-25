@@ -7,7 +7,7 @@ describe('Email', () => {
 
   it('should create an email', () => {
     const email = Email.create('hola@dominio.com');
-    expect(email.valueOf()).toBe('hola@dominio.com');
+    expect(email.value).toBe('hola@dominio.com');
   });
 
   it('should be equal with the same address', () => {

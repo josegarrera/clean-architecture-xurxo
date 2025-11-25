@@ -4,7 +4,7 @@ import { Password } from '../core/Password';
 describe('Password', () => {
   it('should create a password', () => {
     const password = Password.create('12345678A');
-    expect(password.valueOf()).toBe('12345678A');
+    expect(password.value).toBe('12345678A');
   });
 
   it('should validate at least 8 characters', () => {

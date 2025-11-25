@@ -1,12 +1,6 @@
 export class Password {
-  private readonly value: string;
-
-  private constructor(value: string) {
+  private constructor(readonly value: string) {
     this.value = value;
-  }
-
-  valueOf(): string {
-    return this.value;
   }
 
   static create(password: string): Password {
@@ -17,6 +11,6 @@ export class Password {
   }
 
   equals(other: Password) {
-    return this.value === other.valueOf();
+    return this.value === other.value;
   }
 }
