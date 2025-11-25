@@ -25,6 +25,9 @@ export class User {
     if (!props.name || props.name.trim() === '') {
       throw new Error('Name is required');
     }
+    if (!props.email) {
+      throw new Error('Email is required');
+    }
     return new User(props);
   }
 }

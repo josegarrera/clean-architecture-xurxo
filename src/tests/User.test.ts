@@ -43,4 +43,16 @@ describe('User', () => {
       });
     }).toThrow('Name is required');
   });
+
+  it('should not create user without email', () => {
+    const password = Password.create('password123');
+
+    expect(() => {
+      User.create({
+        name: 'John Doe',
+        email: undefined as unknown as Email,
+        password,
+      });
+    }).toThrow('Email is required');
+  });
 });
