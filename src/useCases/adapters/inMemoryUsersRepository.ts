@@ -1,12 +1,8 @@
 import { IUsersRepository } from '../ports/IUsersRepository';
 import { User } from '../../domain/User';
-import { Email } from '../../domain/Email';
-import { Password } from '../../domain/Password';
 
 export class InMemoryUsersRepository implements IUsersRepository {
-  private users: User[] = [
-    User.create({ name: 'John Doe', email: Email.create('email@dominio.com'), password: Password.create('aaaaaa123') }),
-  ];
+  private users: User[] = [];
 
   getAll(): Promise<User[]> {
     return Promise.resolve(this.users);
