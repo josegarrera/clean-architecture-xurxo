@@ -47,4 +47,21 @@ describe('Add user', () => {
     });
     await expect(addUser.execute(secondUser)).rejects.toThrow('Email already in use');
   });
+
+  it('should throw an error when adding a user with an already registered domain', async () => {
+    const usersRepository = new MockUsersRepository();
+    const firstUser = User.create({
+      name: 'John Doe',
+      email: Email.create('email@dominio.com'),
+      password: Password.create('aaaaaa123'),
+    });
+    const addUser = new AddUser(usersRepository);
+    await addUser.execute(firstUser);
+    const secondUser = User.create({
+      name: 'John Doe',
+      email: Email.create('email2@dominio.com'),
+      password: Password.create('aaaaaa123'),
+    });
+    await expect(addUser.execute(secondUser)).rejects.toThrow('Domain already in use');
+  });
 });

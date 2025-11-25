@@ -11,4 +11,8 @@ export class Email {
   equals(other: Email) {
     return this.value === other.value;
   }
+
+  hasSameDomain(secondEmail: Email) {
+    return this.value.split('@')[1] === secondEmail.value.split('@')[1];
+  }
 }
