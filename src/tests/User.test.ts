@@ -11,8 +11,36 @@ Test Plan:
 6. Comparar dos usuarios con distinto id son distintos
  */
 
+import { User } from '../core/User';
+import { Email } from '../core/Email';
+import { Password } from '../core/Password';
+
 describe('User', () => {
   it('should create a user with valid data', () => {
-    expect(true).toBe(true);
+    const email = Email.create('test@example.com');
+    const password = Password.create('password123');
+
+    const user = User.create({
+      name: 'John Doe',
+      email,
+      password,
+    });
+
+    expect(user).toBeDefined();
+    expect(user.id).toBeDefined();
+    expect(user.name).toBe('John Doe');
+  });
+
+  it('should not create user without name', () => {
+    const email = Email.create('test@example.com');
+    const password = Password.create('password123');
+
+    expect(() => {
+      User.create({
+        name: '',
+        email,
+        password,
+      });
+    }).toThrow('Name is required');
   });
 });
