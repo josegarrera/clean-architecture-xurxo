@@ -1,5 +1,5 @@
 import { expect } from '@jest/globals';
-import { Password } from '../core/Password';
+import { Password } from '../domain/Password';
 
 describe('Password', () => {
   it('should create a password', () => {

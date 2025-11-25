@@ -1,4 +1,4 @@
-import { Email } from '../core/Email';
+import { Email } from '../domain/Email';
 
 describe('Email', () => {
   it('should throw an error if email is invalid', () => {

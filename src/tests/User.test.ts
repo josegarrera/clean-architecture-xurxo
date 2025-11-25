@@ -11,9 +11,9 @@ Test Plan:
 6. Comparar dos usuarios con distinto id son distintos
  */
 
-import { User } from '../core/User';
-import { Email } from '../core/Email';
-import { Password } from '../core/Password';
+import { User } from '../domain/User';
+import { Email } from '../domain/Email';
+import { Password } from '../domain/Password';
 
 describe('User', () => {
   it('should create a user with valid data', () => {
