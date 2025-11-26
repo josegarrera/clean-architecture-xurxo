@@ -20,7 +20,7 @@ export class View implements UserView {
 
     console.log('Users!:');
     users.forEach((user) => {
-      console.log(`\n${user.name} - ${user.email}`);
+      console.log(`\n${user.name} - ${user.email.value}`);
     });
   }
 
@@ -34,7 +34,7 @@ export class View implements UserView {
 
   async askForName(): Promise<string> {
     return new Promise((resolve) => {
-      this.rl.question('Name?', (name) => {
+      this.rl.question('Name? ', (name) => {
         resolve(name.trim());
       });
     });
@@ -42,7 +42,7 @@ export class View implements UserView {
 
   async askForEmail(): Promise<string> {
     return new Promise((resolve) => {
-      this.rl.question('Email?', (email) => {
+      this.rl.question('Email? ', (email) => {
         resolve(email.trim());
       });
     });
@@ -50,7 +50,7 @@ export class View implements UserView {
 
   async askForPassword(): Promise<string> {
     return new Promise((resolve) => {
-      this.rl.question('Password?', (password) => {
+      this.rl.question('Password? ', (password) => {
         resolve(password.trim());
       });
     });

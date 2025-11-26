@@ -13,9 +13,12 @@ export class Presenter {
   ) {}
 
   async init(): Promise<void> {
+    const showList = true;
     this.presentWelcome();
-    await this.presentUsers();
-    await this.presentCreateUserPrompt();
+    while (showList) {
+      await this.presentUsers();
+      await this.presentCreateUserPrompt();
+    }
   }
 
   presentWelcome(): void {
