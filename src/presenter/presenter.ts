@@ -31,17 +31,36 @@ export class Presenter {
   }
 
   async presentCreateUserPrompt(): Promise<void> {
+    const errors: string[] = ['Ups, something went wrong :( \n'];
     this.view.showCreateUserPrompt();
 
     const name = await this.view.askForName();
-    const email = await this.view.askForEmail();
-    const password = await this.view.askForPassword();
+    let email: Email | null = null;
+    let password: Password | null = null;
 
-    // hacer linea a linea para devolver errores
-    const user = User.create({ name, email: Email.create(email), password: Password.create(password) });
+    try {
+      email = Email.create(await this.view.askForEmail());
+    } catch (error: unknown) {
+      errors.push(error instanceof Error ? error.message : 'Error de email desconocido');
+    }
 
-    this.addUser.execute(user);
+    try {
+      password = Password.create(await this.view.askForPassword());
+    } catch (error: unknown) {
+      errors.push(error instanceof Error ? error.message : 'Error de contraseña desconocido');
+    }
 
+    if (email && password) {
+      const user = User.create({ name, email, password });
+
+      this.addUser.execute(user);
+    }
+
+    // TODO Show errors properly
+    if (errors.length > 1) {
+      this.view.showErrors(errors);
+      return;
+    }
     this.view.showUserCreated();
   }
 }

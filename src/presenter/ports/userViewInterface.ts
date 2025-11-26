@@ -8,6 +8,7 @@ export interface UserView {
   askForEmail(): Promise<string>;
   askForPassword(): Promise<string>;
   showUserCreated(): void;
+  showErrors(errors: string[]): void;
   // showError(message: string): void;
   // createUserInput(props: UserProps): UserProps;
 }

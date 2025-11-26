@@ -60,6 +60,10 @@ export class View implements UserView {
     console.log('Creating new User');
   }
 
+  showErrors(errors: string[]): void {
+    errors.forEach((error) => console.log(error));
+  }
+
   close(): void {
     this.rl.close();
   }
