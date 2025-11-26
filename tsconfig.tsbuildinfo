@@ -1,1 +1,1 @@
-{"root":["./src/core/sum.ts"],"version":"5.8.3"}
+{"root":["./src/index.ts","./src/domain/email.ts","./src/domain/password.ts","./src/domain/user.ts","./src/presenter/presenter.ts","./src/usecases/adduser.ts","./src/usecases/listusers.ts","./src/usecases/adapters/inmemoryusersrepository.ts","./src/usecases/ports/iusersrepository.ts","./src/view/view.ts"],"version":"5.8.3"}

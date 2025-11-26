@@ -4,6 +4,7 @@
   "description": "TypeScript template with ESLint, Prettier and Jest",
   "main": "lib/index.js",
   "scripts": {
+    "start": "node lib/index.js",
     "prepare": "husky install",
     "dev": "tsc --watch",
     "build": "npm run clean && tsc -b",
