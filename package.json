@@ -1,7 +1,6 @@
 {
   "name": "ts-eslint-prettier-jest-minimal",
   "version": "1.0.0",
-  "type": "module",
   "description": "TypeScript template with ESLint, Prettier and Jest",
   "main": "lib/index.js",
   "scripts": {
@@ -61,6 +60,7 @@
     "tailwind-merge": "^3.4.0",
     "tailwindcss": "^4.1.17",
     "ts-jest": "29.4.0",
+    "tsx": "^4.20.6",
     "typescript": "5.8.3",
     "vite": "^7.2.4"
   },
