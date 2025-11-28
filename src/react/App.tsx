@@ -1,16 +1,10 @@
 import { useEffect, useState } from 'react';
-import { InMemoryUsersRepository } from '../useCases/adapters/inMemoryUsersRepository';
-import { ListUsers } from '../useCases/listUsers';
-import { AddUser } from '../useCases/addUser';
-import { DeclarativePresenterImpl } from '../presenter/declarativePresenter';
+import { HttpDeclarativePresenter } from '../presenter/httpDeclarativePresenter';
 import { PresenterState } from '../presenter/ports/declarativePresenterInterface';
 import { UserList } from './components/UserList';
 import { UserForm } from './components/UserForm';
 
-const usersRepository = new InMemoryUsersRepository();
-const listUsers = new ListUsers(usersRepository);
-const addUser = new AddUser(usersRepository);
-const presenter = new DeclarativePresenterImpl(listUsers, addUser);
+const presenter = new HttpDeclarativePresenter();
 
 export function App() {
   const [state, setState] = useState<PresenterState>(presenter.getState());

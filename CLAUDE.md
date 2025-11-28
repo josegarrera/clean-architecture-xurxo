@@ -16,6 +16,49 @@ npm run validate     # Full check: compile + lint + test
 npm start            # Run the compiled application
 ```
 
+## Usage
+
+The application supports different views and repositories via CLI arguments:
+
+```bash
+# CLI view with in-memory repository (default)
+npm start
+
+# CLI view with file persistence
+npm start -- --repo=file
+
+# React view with in-memory repository
+npm start -- --view=react
+
+# React view with file persistence
+npm start -- --view=react --repo=file
+```
+
+### CLI Arguments
+
+| Argument | Values | Default | Description |
+|----------|--------|---------|-------------|
+| `--view` | `cli`, `react` | `cli` | UI to use |
+| `--repo` | `memory`, `file` | `memory` | Data storage backend |
+
+### Views
+
+- **CLI**: Interactive terminal interface with menu-driven navigation
+- **React**: Web UI running on http://localhost:5173 (uses Vite dev server)
+
+### Repositories
+
+- **memory**: In-memory storage (data lost on restart)
+- **file**: JSON file persistence at `data/users.json`
+
+### Architecture with React View
+
+When using `--view=react`, the app starts:
+1. **API server** on port 3001 (`ApiView` + `ApiPresenter`)
+2. **Vite dev server** on port 5173 (React UI)
+
+React communicates with the backend via HTTP, ensuring CLI and React share the same data when using the same repository.
+
 ## Architecture Overview
 
 This is a Clean Architecture implementation in TypeScript for a user management CLI application.
